@@ -7,14 +7,17 @@ import { AppThunkAction } from './';
 export interface WeatherForecastsState {
     isLoading: boolean;
     startDateIndex?: number;
-    forecasts: WeatherForecast[];
+    forecasts: Transaction[];
 }
 
-export interface WeatherForecast {
-    date: string;
-    temperatureC: number;
-    temperatureF: number;
-    summary: string;
+export interface Transaction {
+	type: string;
+	units: string;
+	price: string;
+	value: string;
+	profit: string;
+	product: string;
+	transactionTime: Date;
 }
 
 // -----------------
@@ -29,7 +32,7 @@ interface RequestWeatherForecastsAction {
 interface ReceiveWeatherForecastsAction {
     type: 'RECEIVE_WEATHER_FORECASTS';
     startDateIndex: number;
-    forecasts: WeatherForecast[];
+    forecasts: Transaction[];
 }
 
 // Declare a 'discriminated union' type. This guarantees that all references to 'type' properties contain one of the
@@ -46,7 +49,7 @@ export const actionCreators = {
         const appState = getState();
         if (appState && appState.weatherForecasts && startDateIndex !== appState.weatherForecasts.startDateIndex) {
             fetch(`weatherforecast`)
-                .then(response => response.json() as Promise<WeatherForecast[]>)
+                .then(response => response.json() as Promise<Transaction[]>)
                 .then(data => {
                     dispatch({ type: 'RECEIVE_WEATHER_FORECASTS', startDateIndex: startDateIndex, forecasts: data });
                 });

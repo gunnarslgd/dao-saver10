@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.WindowsAzure.Storage;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace DaoSaver
 {
@@ -18,6 +20,8 @@ namespace DaoSaver
 
 		public IConfiguration Configuration { get; }
 
+		public static CloudTable Transactions;
+
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
@@ -28,7 +32,11 @@ namespace DaoSaver
 			{
 				configuration.RootPath = "ClientApp/build";
 			});
-		}
+ 
+			var cloudStorageAccount = CloudStorageAccount.Parse(Configuration["AzureStorageConnectionString"]);
+			var tableClient = cloudStorageAccount.CreateCloudTableClient();
+			Transactions = tableClient.GetTableReference("transactions");
+ 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

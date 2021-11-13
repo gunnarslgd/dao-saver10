@@ -42,24 +42,30 @@ class FetchData extends React.PureComponent<WeatherForecastProps> {
   private renderForecastsTable() {
     return (
       <table className='table table-striped' aria-labelledby="tabelLabel">
-        <thead>
-          <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
-        </thead>
-        <tbody>
-          {this.props.forecasts.map((forecast: WeatherForecastsStore.WeatherForecast) =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
+	      <thead>
+	      <tr>
+		      <th>Product</th>
+		      <th>Price</th>
+		      <th>Units</th>
+		      <th>Type</th>
+		      <th>Value</th>
+		      <th>Profit</th>
+		      <th>Transaction Time</th>
+	      </tr>
+	      </thead>
+	      <tbody>
+	      {this.props.forecasts.map((forecast: WeatherForecastsStore.Transaction) =>
+            <tr key="{forecast.transactionTime}">
+              <td>{forecast.product}</td>
+              <td>{forecast.price}</td>
+              <td>{forecast.units}</td>
+              <td>{forecast.type}</td>
+              <td>{forecast.value}</td>
+              <td>{forecast.profit}</td>
+              <td>{new Date(forecast.transactionTime).toLocaleString()}</td>
             </tr>
           )}
-        </tbody>
+	      </tbody>
       </table>
     );
   }
