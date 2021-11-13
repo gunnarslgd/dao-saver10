@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DaoSaver", "DaoSaver.csproj", "{63A98C36-FA9F-436A-9BEF-BD0E213CC510}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{63A98C36-FA9F-436A-9BEF-BD0E213CC510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A98C36-FA9F-436A-9BEF-BD0E213CC510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A98C36-FA9F-436A-9BEF-BD0E213CC510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A98C36-FA9F-436A-9BEF-BD0E213CC510}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C34C64E-0D5A-4E8E-AB3C-F6CFF65B2566}
+	EndGlobalSection
+EndGlobal
