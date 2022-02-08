@@ -33,9 +33,15 @@ namespace DaoSaver
 		    var startDateString = DateTime.Now.AddDays(-days).ToString("yyyy-MM-dd");
 		    do
 		    {
-			    var query = new TableQuery<MarketStep>()
-				    .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, startDateString))
-				    .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, indice));
+			    string startDateFilter = TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, startDateString);
+			    string marketKeyFiler = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, indice);
+			    string finalFilter = TableQuery.CombineFilters(startDateFilter, TableOperators.And, marketKeyFiler);
+
+			    var query = new TableQuery<MarketStep>().Where(finalFilter);
+
+			    // var query = new TableQuery<MarketStep>()
+				   //  .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.GreaterThanOrEqual, startDateString))
+				   //  .Where(TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, indice));
 
 			    var seg = await Startup.History.ExecuteQuerySegmentedAsync<MarketStep>(query, token);
 			    token = seg.ContinuationToken;
