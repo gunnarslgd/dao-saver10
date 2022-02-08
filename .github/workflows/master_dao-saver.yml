@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'dao-saver'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_2127048355A2498DA04D8C9397A50FCA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_54E3C08181DC4D509B39A27782A5641E }}
           package: .
