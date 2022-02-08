@@ -6,18 +6,6 @@ using DaoSaver;
 
 namespace Charts
 {
-	/*
-	 * NASDAQ100
-	 * DAX PERFORMANCE-INDEX
-	 * Euronext 100 Index
-	 * EURUSD
-	 * HANG SENG INDEX
-	 * JAPAN225
-	 * NZDAUD
-	 * Shenzhen Component
-	 * SSE Composite Index
-	 */
-
 	public class MarketStepCache
 	{
 		private static Dictionary<string, List<MarketStep>> _cache = new Dictionary<string, List<MarketStep>>();
